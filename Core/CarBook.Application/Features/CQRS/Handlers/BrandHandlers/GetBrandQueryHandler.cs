@@ -27,7 +27,7 @@ namespace CarBook.Application.Features.CQRS.Handlers.BrandHandlers
 
                 {
                      BrandId = x.BrandId,
-                    Name = x.Name,
+                     Name = x.Name,
                     
                 }).ToList();
             }

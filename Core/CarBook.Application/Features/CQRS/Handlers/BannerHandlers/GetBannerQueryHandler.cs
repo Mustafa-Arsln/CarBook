@@ -24,7 +24,7 @@ namespace CarBook.Application.Features.CQRS.Handlers.BannerHandlers
             return values.Select(x => new GetBannerQueryResult
 
             {
-                BannerID = x.BannerID,
+                BannerID = x.BannerId,
                 Description = x.Description,
                 Title = x.Title, 
                 VideoDescription = x.VideoDescription,

@@ -24,7 +24,7 @@ namespace CarBook.Application.Features.CQRS.Handlers.BannerHandlers
             var values = await _repository.GetByIdAsync(query.Id);
             return new GetBannerByIdQueryResult
             {
-                BannerID=values.BannerID,
+                BannerID=values.BannerId,
                 Description=values.Description,
                 Title=values.Title,
                 VideoDescription=values.VideoDescription,

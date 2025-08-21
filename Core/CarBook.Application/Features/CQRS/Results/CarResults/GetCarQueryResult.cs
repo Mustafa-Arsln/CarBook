@@ -1,16 +1,16 @@
-﻿using System;
+﻿using Carbook.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Carbook.Domain.Entities
+namespace CarBook.Application.Features.CQRS.Results.CarResults
 {
-    public class Car
-    { 
+    public class GetCarQueryResult
+    {
         public int CarId { get; set; }
-        public int BrandId  { get; set; }
-        public Brand Brand  { get; set; }
+        public int BrandId { get; set; }
         public string Model { get; set; }
         public string CoverImageURL { get; set; }
         public int Km { get; set; }
@@ -19,9 +19,5 @@ namespace Carbook.Domain.Entities
         public int Lougage { get; set; }
         public string Fuel { get; set; }
         public string BigImageURL { get; set; }
-        public List<CarFeature> CarFeature { get; set; }
-        public List<CarDescription> CarDescription { get; set; }
-        public List<CarPricing> CarPricings { get; set; }
-
     }
 }
