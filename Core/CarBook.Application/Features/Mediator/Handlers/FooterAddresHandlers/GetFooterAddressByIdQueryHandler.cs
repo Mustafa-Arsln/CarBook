@@ -22,14 +22,14 @@ namespace CarBook.Application.Features.Mediator.Handlers.FooterAddresHandlers
 
         public async Task<GetFooterAddressByIdQueryResult> Handle(GetFooterAddressByIdQuery request, CancellationToken cancellationToken)
         {
-            var value = await _repository.GetByIdAsync(request.Id);
+            var values = await _repository.GetByIdAsync(request.Id);
             return new GetFooterAddressByIdQueryResult
             {
-                Address = value.Address,
-                Description = value.Description,
-                Email = value.Email,
-                Phone = value.Phone,
-                FooterAddressId = value.FooterAddressId
+                Address = values.Address,
+                Description = values.Description,
+                Email = values.Email,
+                Phone = values.Phone,
+                FooterAddressId = values.FooterAddressId
             };
         }
     }

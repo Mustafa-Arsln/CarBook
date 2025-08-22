@@ -29,7 +29,7 @@ namespace CarBook.Application.Features.Mediator.Handlers.FooterAddresHandlers
                 Description = x.Description,
                 Email = x.Email,
                 FooterAddressId = x.FooterAddressId,
-                Phone= x.Phone,
+                Phone = x.Phone,
             }).ToList();
         }
     }

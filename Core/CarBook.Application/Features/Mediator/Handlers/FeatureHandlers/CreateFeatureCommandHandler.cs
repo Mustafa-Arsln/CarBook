@@ -23,7 +23,8 @@ namespace CarBook.Application.Features.Mediator.Handlers.FeatureHandlers
         {
             await _repository.CreateAsync(new Feature
             {
-                Name = request.Name,    
+                Name = request.Name
+                
 
 
 

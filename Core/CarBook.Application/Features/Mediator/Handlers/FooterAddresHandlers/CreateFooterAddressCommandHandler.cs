@@ -11,7 +11,8 @@ using System.Threading.Tasks;
 namespace CarBook.Application.Features.Mediator.Handlers.FooterAddresHandlers
 {
     public class CreateFooterAddressCommandHandler : IRequestHandler<CreateFooterAddressCommand>
-    {private readonly IRepository<FooterAddress> _repository;
+    {
+        private readonly IRepository<FooterAddress> _repository;
 
         public CreateFooterAddressCommandHandler(IRepository<FooterAddress> repository)
         {
@@ -21,10 +22,11 @@ namespace CarBook.Application.Features.Mediator.Handlers.FooterAddresHandlers
         public async Task Handle(CreateFooterAddressCommand request, CancellationToken cancellationToken)
         {
             await _repository.CreateAsync(new FooterAddress
-            {Address = request.Address,
-            Description = request.Description,
-            Email = request.Email,
-            Phone = request.Phone
+            {
+                Address = request.Address,
+                Description = request.Description,
+                Email = request.Email,
+                Phone = request.Phone
 
             });
         }

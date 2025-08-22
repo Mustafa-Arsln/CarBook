@@ -16,4 +16,8 @@
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="9.0.8" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Mediator\Queries\SocialMediaQueries\" />
+  </ItemGroup>
+
 </Project>
