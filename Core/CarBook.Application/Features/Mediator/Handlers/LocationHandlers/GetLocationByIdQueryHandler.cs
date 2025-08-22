@@ -1,6 +1,6 @@
 ﻿using Carbook.Domain.Entities;
 using CarBook.Application.Features.Mediator.Queries.LocationQueries;
-using CarBook.Application.Features.Mediator.Results.FeatureResult;
+using CarBook.Application.Features.Mediator.Results.FeatureResults;
 using CarBook.Application.Features.Mediator.Results.LocationResults;
 using CarBook.Application.Interfaces;
 using MediatR;

@@ -1,6 +1,6 @@
 ﻿using Carbook.Domain.Entities;
 using CarBook.Application.Features.Mediator.Queries.PricingQueries;
-using CarBook.Application.Features.Mediator.Results.FeatureResult;
+using CarBook.Application.Features.Mediator.Results.FeatureResults;
 using CarBook.Application.Features.Mediator.Results.PricingResults;
 using CarBook.Application.Interfaces;
 using MediatR;

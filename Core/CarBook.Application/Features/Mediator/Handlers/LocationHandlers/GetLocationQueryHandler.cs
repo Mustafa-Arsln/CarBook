@@ -1,6 +1,6 @@
 ﻿using Carbook.Domain.Entities;
 using CarBook.Application.Features.Mediator.Queries.LocationQueries;
-using CarBook.Application.Features.Mediator.Results.FeatureResult;
+using CarBook.Application.Features.Mediator.Results.FeatureResults;
 using CarBook.Application.Features.Mediator.Results.LocationResults;
 using CarBook.Application.Interfaces;
 using MediatR;
@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace CarBook.Application.Features.Mediator.Handlers.LocationHandlers
 {
-    public class GetLocationQueryHandler : IRequestHandler<GetLocationQuery, List<GetLocationQueryResults>>
+    public class GetLocationQueryHandler : IRequestHandler<GetLocationQuery, List<GetLocationQueryResult>>
     {
         private readonly IRepository<Location> _repository;
 
@@ -21,11 +21,11 @@ namespace CarBook.Application.Features.Mediator.Handlers.LocationHandlers
             _repository = repository;
         }
 
-        public async Task<List<GetLocationQueryResults>> Handle(GetLocationQuery request, CancellationToken cancellationToken)
+        public async Task<List<GetLocationQueryResult>> Handle(GetLocationQuery request, CancellationToken cancellationToken)
         {
             var values = await _repository.GetAllAsync();
 
-            return values.Select(x => new GetLocationQueryResults
+            return values.Select(x => new GetLocationQueryResult
 
             {
             LocationId = x.LocationId,

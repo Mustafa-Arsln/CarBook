@@ -1,7 +1,7 @@
 ﻿using Carbook.Domain.Entities;
 using CarBook.Application.Features.CQRS.Results.BrandResults;
 using CarBook.Application.Features.Mediator.Queries.FeatureQueries;
-using CarBook.Application.Features.Mediator.Results.FeatureResult;
+using CarBook.Application.Features.Mediator.Results.FeatureResults;
 using CarBook.Application.Interfaces;
 using MediatR;
 using System;
