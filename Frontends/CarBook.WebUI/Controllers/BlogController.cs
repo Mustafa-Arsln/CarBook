@@ -19,6 +19,7 @@ namespace CarBook.WebUI.Controllers
             ViewBag.v1 = "Bloglar";
             ViewBag.v2 = "Yazarlarımızın Blogları";
             var client = _httpClientFactory.CreateClient();
+
             var responseMessage = await client.GetAsync("https://localhost:7081/api/Blogs/GetAllBlogsWithAuthorList");
 
             if (responseMessage.IsSuccessStatusCode)
@@ -27,12 +28,13 @@ namespace CarBook.WebUI.Controllers
                 var values = JsonConvert.DeserializeObject<List<ResultsAllBlogsWithAuthorDto>>(jsonData);
                 return View(values);
             }
-            return View();
+            return View();  
         }
         public async Task<IActionResult> BlogDetail(int id)
         {
             ViewBag.v1 = "Bloglar";
             ViewBag.v2 = "Blog Detayları ve Yorumlar";
+            ViewBag.blogId=id;
             return View();
         }
     }
