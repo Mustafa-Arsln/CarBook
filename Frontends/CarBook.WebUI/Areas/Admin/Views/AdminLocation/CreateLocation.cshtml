@@ -1,0 +1,46 @@
+﻿@model CreateLocationDto
+@{
+    ViewData["Title"] = "CreateLocation";
+    Layout = "~/Views/AdminLayout/Index.cshtml";
+}
+
+<div class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-12">
+
+
+                <div class="card">
+                    <div class="card-body">
+
+                        <h4 class="card-title">Location Bilgisi Girişi</h4>
+                        <p class="card-subtitle mb-4">
+                            Araçlarn alındığı ve teslim edildiği lokasyon bilgisinin yer aldığı sayfadır.Bilgileri eksiksiz
+                            olarak doldurmanız önemlidir.
+                        </p>
+
+                        <form method="post">
+
+                            <div class="form-group">
+                                <label for="exampleInputName">Lokasyon Adı</label>
+                                <input type="text" class="form-control" id="exampleInputName" asp-for="Name" placeholder="Başlığı Giriniz">
+                            </div>
+
+                            
+
+                            <button type="submit" class="btn btn-primary waves-effect waves-light">LokasyonBilgisini Kaydet</button>
+                        </form>
+
+                    </div> <!-- end card-body-->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
