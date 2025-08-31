@@ -80,8 +80,9 @@ namespace CarBook.WebUI.Areas.Admin.Controllers
         }
         [HttpPost]
         [Route("UpdateCategory/{id}")]
-        public async Task<IActionResult> UpdateCategory(UpdateCategoryDto updateCategoryDto)
+        public async Task<IActionResult> UpdateCategory(int id, UpdateCategoryDto updateCategoryDto)
         {
+            updateCategoryDto.CategoryId = id;
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(updateCategoryDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
