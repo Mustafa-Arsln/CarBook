@@ -3,6 +3,12 @@
     ViewData["Title"] = "Index";
     Layout = null;
 }
+<style>
+    #drop option{
+    color:black;
+    }
+</style>
+
 <!DOCTYPE html>
 <html lang="en">
 @await Component.InvokeAsync("_HeadUILayoutComponentPartial")
@@ -23,7 +29,7 @@
                                 <div class="form-group">
                                     <label for="" class="label">Alınacak Lokasyon</label>
                                     @Html.DropDownListFor(x => x.LocationId, (List<SelectListItem>)
-                                    ViewBag.v, new { @class = "form-control", name = "locationId"  })
+                                    ViewBag.v, new { @class = "form-control", @id="drop"  })
                                 </div>
 
                                 <div class="d-flex">
@@ -78,7 +84,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <p><a href="#" class="btn btn-primary py-3 px-4">Reserve Your Perfect Car</a></p>
+                                <p><a href="#" class="btn btn-primary py-3 px-4">Araçlarımıza Gözatın!</a></p>
                             </div>
                         </div>
                     </div>
