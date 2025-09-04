@@ -1,4 +1,5 @@
-﻿using CarBook.Application.Features.Mediator.Queries.BlogQueries;
+﻿using Carbook.Domain.Entities;
+using CarBook.Application.Features.Mediator.Queries.BlogQueries;
 using CarBook.Application.Features.Mediator.Queries.CarPricingQueries;
 using CarBook.Application.Features.Mediator.Results.BlogResults;
 using CarBook.Application.Features.Mediator.Results.CarPricingResults;
@@ -26,7 +27,9 @@ namespace CarBook.Application.Features.Mediator.Handlers.CarPricingHandlers
             var values = _repository.GetCarPricingWithTimePeriod1();
             return values.Select(x => new GetCarPricingWithTimePeriodQueryResult
             {
-                 Model = x.Model,
+
+                Brand = x.Brand,
+                Model = x.Model,
                 CoverImageURL = x.CoverImageURL,
                
                 DailyAmount =x.Amounts[0],

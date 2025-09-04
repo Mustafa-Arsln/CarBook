@@ -20,7 +20,7 @@ namespace CarBook.WebUI.Controllers
             ViewBag.v1 = "Paketler";
             ViewBag.v2 = "Araç Fiyatları";
             var client = _httpClientFactory.CreateClient();
-
+           
             var responseMessage = await client.GetAsync("https://localhost:7081/api/CarPricings/GetCarPricingWithTimePeriodList");
 
             if (responseMessage.IsSuccessStatusCode)

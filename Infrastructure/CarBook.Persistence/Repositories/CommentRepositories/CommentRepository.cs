@@ -21,13 +21,13 @@ namespace CarBook.Persistence.Repositories.CommentRepositories
 
         public void Create(Comment entity)
         {
-           _context.Comments.Add(entity);
+            _context.Comments.Add(entity);
             _context.SaveChanges();
         }
 
         public List<Comment> GetAll()
         {
-            return _context.Comments.Select(x=>new Comment
+            return _context.Comments.Select(x => new Comment
             {
                 CommentId = x.CommentId,
                 BlogId = x.BlogId,
@@ -44,7 +44,7 @@ namespace CarBook.Persistence.Repositories.CommentRepositories
 
         public List<Comment> GetComentsByBlogId(int id)
         {
-            return _context.Set<Comment>().Where(x  => x.BlogId == id).ToList();
+            return _context.Set<Comment>().Where(x => x.BlogId == id).ToList();
         }
 
         public void Remove(Comment entity)
@@ -58,6 +58,10 @@ namespace CarBook.Persistence.Repositories.CommentRepositories
         {
             _context.Comments.Update(entity);
             _context.SaveChanges();
+        }
+        public int GetCountCommentByBlog(int id)
+        {
+            return _context.Comments.Where(x => x.BlogId == id).Count();
         }
     }
 }

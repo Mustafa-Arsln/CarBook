@@ -38,7 +38,10 @@ namespace CarBook.Persistence.Repositories.CarPricingRepositories
             List<CarPricingViewModel> values = new List<CarPricingViewModel>();
             using (var command = _context.Database.GetDbConnection().CreateCommand())
             {
-                command.CommandText = "Select * From (Select Model,CoverImageURL,PricingId,Amount  From CarPricings Inner Join Cars On Cars.CarId=CarPricings.CarId  Inner Join Brands  On Brands.BrandId=Cars.BrandId)As SourceTable Pivot (Sum(Amount) For PricingId In ([1],[2],[3])) as PivotTable;";
+                command.CommandText = "Select * From (Select Model,Name,CoverImageURL" +
+                    ",PricingId,Amount  From CarPricings Inner Join Cars On Cars.CarId=CarPricings.CarId " +
+                    " Inner Join Brands  On Brands.BrandId=Cars.BrandId)As SourceTable Pivot (Sum(Amount)" +
+                    " For PricingId In ([1],[2],[3])) as PivotTable;";
                 command.CommandType = System.Data.CommandType.Text;
                 _context.Database.OpenConnection();
                 using (var reader = command.ExecuteReader())
@@ -49,14 +52,15 @@ namespace CarBook.Persistence.Repositories.CarPricingRepositories
 
                         CarPricingViewModel carPricingViewModel = new CarPricingViewModel()
                         {
+                            Brand = reader["Name"].ToString(),
                             Model = reader["Model"].ToString(),
                             CoverImageURL = reader["CoverImageURL"].ToString(),
 
                             Amounts =new List<decimal>
                             {
-                                Convert.ToDecimal(reader[2]),
-                                Convert.ToDecimal(reader[3]),
-                                Convert.ToDecimal(reader[4])
+                                Convert.ToDecimal(reader["1"]),
+                                Convert.ToDecimal(reader["2"]),
+                                Convert.ToDecimal(reader["3"])
                             }
 
                         };
