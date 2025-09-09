@@ -21,8 +21,8 @@ namespace CarBook.Application.Features.CQRS.Handlers.CarHandlers
         public async Task<List<GetCarQueryResult>> Handle()
         {
             var values = await _repository.GetAllAsync();
-
-            return values.Select(x => new GetCarQueryResult
+            
+            return values.Where(x => !x.IsDeleted).Select(x => new GetCarQueryResult
             {
                 
                 BrandId = x.BrandId,

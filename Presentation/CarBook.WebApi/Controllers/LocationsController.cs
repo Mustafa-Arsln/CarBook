@@ -8,14 +8,13 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CarBook.WebApi.Controllers
 {
-    [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
-    public class LocaitonsController : ControllerBase
+    public class LocationsController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        public LocaitonsController(IMediator mediator)
+        public LocationsController(IMediator mediator)
         {
             _mediator = mediator;
         }
@@ -31,18 +30,21 @@ namespace CarBook.WebApi.Controllers
             var value = await _mediator.Send(new GetLocationByIdQuery(id));
             return Ok(value);
         }
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public async Task<IActionResult> CreateLocation(CreateLocationCommand command)
         {
             await _mediator.Send(command);
             return Ok("Konum Başarıyla Eklendi.");
         }
+        [Authorize(Roles = "Admin")]
         [HttpDelete]
         public async Task<IActionResult> RemoveLocation(int id)
         {
             await _mediator.Send(new RemoveLocationCommand(id));
             return Ok("Konum Başarıyla Silindi.");
         }
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public async Task<IActionResult> UpdateLocation(UpdateLocationCommand command)
         {

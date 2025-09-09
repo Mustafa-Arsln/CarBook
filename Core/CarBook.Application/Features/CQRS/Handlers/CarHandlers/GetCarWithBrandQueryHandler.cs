@@ -23,7 +23,7 @@ namespace CarBook.Application.Features.CQRS.Handlers.CarHandlers
         {
             var values =  _repository.GetCarsListWithBrands();
 
-            return values.Select(x => new GetCarWithBrandQueryResult
+            return values.Where(x => !x.IsDeleted).Select(x => new GetCarWithBrandQueryResult
             {
                 BradName=x.Brand.Name,
                 BrandId = x.BrandId,

@@ -22,7 +22,8 @@ namespace CarBook.Application.Features.CQRS.Handlers.CarHandlers
         {
 
             var value = await _repository.GetByIdAsync(command.Id);
-            await _repository.RemoveAsync(value);
+            value.IsDeleted = true;
+            await _repository.UpdateAsync(value);
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Text;
 
 namespace CarBook.WebUI.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
     [Area("Admin")]
     [Route("Admin/AdminLocation")]
     public class AdminLocationController : Controller
@@ -27,7 +27,7 @@ namespace CarBook.WebUI.Areas.Admin.Controllers
             {
                 var client = _httpClientFactory.CreateClient();
                 client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-                var responseMessage = await client.GetAsync("https://localhost:7081/api/Locaitons");
+                var responseMessage = await client.GetAsync("https://localhost:7081/api/Locations");
                 if (responseMessage.IsSuccessStatusCode)
                 {
                     var jsonData = await responseMessage.Content.ReadAsStringAsync();
@@ -52,7 +52,7 @@ namespace CarBook.WebUI.Areas.Admin.Controllers
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(createLocationDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PostAsync("https://localhost:7081/api/Locaitons", stringContent);
+            var responseMessage = await client.PostAsync("https://localhost:7081/api/Locations", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index", "AdminLocation", new { area = "Admin" });
@@ -63,7 +63,7 @@ namespace CarBook.WebUI.Areas.Admin.Controllers
         public async Task<IActionResult> RemoveLocation(int id)
         {
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.DeleteAsync("https://localhost:7081/api/Locaitons?id=" + id);
+            var responseMessage = await client.DeleteAsync("https://localhost:7081/api/Locations?id=" + id);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index", "AdminLocation", new { area = "Admin" });
@@ -77,7 +77,7 @@ namespace CarBook.WebUI.Areas.Admin.Controllers
             var client = _httpClientFactory.CreateClient();
 
 
-            var resposenMessage = await client.GetAsync($"https://localhost:7081/api/Locaitons/{id}");
+            var resposenMessage = await client.GetAsync($"https://localhost:7081/api/Locations/{id}");
             if (resposenMessage.IsSuccessStatusCode)
             {
                 var jsonData = await resposenMessage.Content.ReadAsStringAsync();
@@ -94,7 +94,7 @@ namespace CarBook.WebUI.Areas.Admin.Controllers
             var client = _httpClientFactory.CreateClient();
             var jsonData = JsonConvert.SerializeObject(updateLocationDto);
             StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
-            var responseMessage = await client.PutAsync("https://localhost:7081/api/Locaitons/", stringContent);
+            var responseMessage = await client.PutAsync("https://localhost:7081/api/Locations/", stringContent);
             if (responseMessage.IsSuccessStatusCode)
             {
                 return RedirectToAction("Index", "AdminLocation", new { area = "Admin" });
