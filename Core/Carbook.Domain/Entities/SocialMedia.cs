@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Carbook.Domain.Entities
 {
-    public class SocialMedia
+    public class SocialMedia : BaseEntity
     {
         public int SocialMediaId { get; set; }
         public string Name { get; set; }

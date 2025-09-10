@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Carbook.Domain.Entities
 {
-    public class Location
+    public class Location : BaseEntity
     {
         public int LocationId { get; set; } 
         public string Name { get; set; }

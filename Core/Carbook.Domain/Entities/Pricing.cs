@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Carbook.Domain.Entities
 {
-    public class Pricing
+    public class Pricing : BaseEntity
     {
         public int PricingId { get; set; } 
         public string Name { get; set; }

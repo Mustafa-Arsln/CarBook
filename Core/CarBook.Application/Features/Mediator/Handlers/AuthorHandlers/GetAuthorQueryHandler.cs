@@ -25,7 +25,7 @@ namespace CarBook.Application.Features.Mediator.Handlers.AuthorHandlers
         {
             var values = await _repository.GetAllAsync();
 
-            return values.Select(x => new GetAuthorQueryResult
+            return values.Where(x => !x.IsDeleted).Select(x => new GetAuthorQueryResult
 
             {
                 AuthorId = x.AuthorId,

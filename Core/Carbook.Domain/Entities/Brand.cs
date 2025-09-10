@@ -8,7 +8,7 @@ using System.Transactions;
 
 namespace Carbook.Domain.Entities
 {
-    public class Brand
+    public class Brand : BaseEntity
     {
         public int BrandId { get; set; }
         public string Name { get; set; }

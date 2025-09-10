@@ -24,7 +24,7 @@ namespace CarBook.Application.Features.Mediator.Handlers.BlogHandlers
            
             var values = _repository.GetAllBlogsWithAuthors();
 
-            return values.Select(x => new GetAllBlogsWithAuthorQueryResult
+            return values.Where(x => !x.IsDeleted).Select(x => new GetAllBlogsWithAuthorQueryResult
             {
                 AuthorId = x.AuthorId,
                 BlogId = x.BlogId,

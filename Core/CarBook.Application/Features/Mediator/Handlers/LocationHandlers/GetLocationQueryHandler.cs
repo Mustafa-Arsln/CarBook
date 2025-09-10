@@ -25,7 +25,7 @@ namespace CarBook.Application.Features.Mediator.Handlers.LocationHandlers
         {
             var values = await _repository.GetAllAsync();
 
-            return values.Select(x => new GetLocationQueryResult
+            return values.Where(x => !x.IsDeleted).Select(x => new GetLocationQueryResult
 
             {
             LocationId = x.LocationId,

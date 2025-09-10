@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Carbook.Domain.Entities
 {
-   public class Banner
+   public class Banner : BaseEntity
     {
         public int BannerId { get; set;}
         public string Title { get; set;}

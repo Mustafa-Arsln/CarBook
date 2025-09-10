@@ -21,7 +21,8 @@ namespace CarBook.Application.Features.CQRS.Handlers.BannerHandlers
         public async Task Handle(RemoveBannerCommand command)
         {
             var value = await _repository.GetByIdAsync(command.Id);
-            await _repository.RemoveAsync(value);
+            value.IsDeleted = true;
+            await _repository.UpdateAsync(value);
         }
     }
 }

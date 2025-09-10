@@ -20,7 +20,8 @@ namespace CarBook.Application.Features.CQRS.Handlers.ContactHandlers
         public async Task Handle(RemoveContactCommand command)
         {
             var value = await _repository.GetByIdAsync(command.Id);
-            await _repository.RemoveAsync(value);
+            value.IsDeleted = true;
+            await _repository.UpdateAsync(value);
         }
     }
 }

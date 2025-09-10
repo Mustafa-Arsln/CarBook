@@ -25,7 +25,7 @@ namespace CarBook.Application.Features.Mediator.Handlers.SocialMediaHandlers
         {
             var values = await _repository.GetAllAsync();
 
-            return values.Select(x => new GetSocialMediaQueryResult
+            return values.Where(x => !x.IsDeleted).Select(x => new GetSocialMediaQueryResult
 
             {
                 SocialMediaId = x.SocialMediaId,

@@ -25,7 +25,7 @@ namespace CarBook.Application.Features.Mediator.Handlers.TestimonialHandlers
         {
             var values = await _repository.GetAllAsync();
 
-            return values.Select(x => new GetTestimonialQueryResult
+            return values.Where(x => !x.IsDeleted).Select(x => new GetTestimonialQueryResult
 
             {
                 TestimonialId = x.TestimonialId,

@@ -21,7 +21,7 @@ namespace CarBook.Application.Features.CQRS.Handlers.ContactHandlers
         {
             var values = await _repository.GetAllAsync();
 
-            return values.Select(x => new GetContactQueryResult
+            return values.Where(x => !x.IsDeleted).Select(x => new GetContactQueryResult
 
             {
                 ContactId = x.ContactId,

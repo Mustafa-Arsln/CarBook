@@ -23,7 +23,7 @@ namespace CarBook.Application.Features.Mediator.Handlers.FooterAddresHandlers
         public async Task<List<GetFooterAddressQueryResult>> Handle(GetFooterAddresQuery request, CancellationToken cancellationToken)
         {
             var values = await _repository.GetAllAsync();
-            return values.Select(x => new GetFooterAddressQueryResult
+            return values.Where(x => !x.IsDeleted).Select(x => new GetFooterAddressQueryResult
             {
                 Address = x.Address,
                 Description = x.Description,

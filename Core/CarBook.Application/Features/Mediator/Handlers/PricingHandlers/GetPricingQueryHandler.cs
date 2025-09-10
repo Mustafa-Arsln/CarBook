@@ -25,7 +25,7 @@ namespace CarBook.Application.Features.Mediator.Handlers.PricingHandlers
         {
             var values = await _repository.GetAllAsync();
 
-            return values.Select(x => new GetPricingQueryResult
+            return values.Where(x => !x.IsDeleted).Select(x => new GetPricingQueryResult
 
             {
                PricingId=x.PricingId,

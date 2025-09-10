@@ -23,7 +23,7 @@ namespace CarBook.Application.Features.CQRS.Handlers.BrandHandlers
             {
                 var values = await _repository.GetAllAsync();
 
-                return values.Select(x => new GetBrandQueryResult
+                return values.Where(x => !x.IsDeleted).Select(x => new GetBrandQueryResult
 
                 {
                      BrandId = x.BrandId,

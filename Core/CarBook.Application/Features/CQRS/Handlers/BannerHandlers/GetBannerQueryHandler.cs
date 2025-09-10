@@ -21,7 +21,7 @@ namespace CarBook.Application.Features.CQRS.Handlers.BannerHandlers
         {
             var values = await _repository.GetAllAsync();
 
-            return values.Select(x => new GetBannerQueryResult
+            return values.Where(x => !x.IsDeleted).Select(x => new GetBannerQueryResult
 
             {
                 BannerID = x.BannerId,

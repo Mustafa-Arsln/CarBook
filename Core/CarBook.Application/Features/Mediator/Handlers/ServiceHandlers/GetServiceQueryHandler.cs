@@ -25,7 +25,7 @@ namespace CarBook.Application.Features.Mediator.Handlers.ServiceQueryHandlers
         public async Task<List<GetServiceQueryResult>> Handle(GetServiceQuery request, CancellationToken cancellationToken)
         {
             var values = await _repository.GetAllAsync();
-            return values.Select(x => new GetServiceQueryResult
+            return values.Where(x => !x.IsDeleted).Select(x => new GetServiceQueryResult
             {
                 IconURL = x.IconURL,
                 Title = x.Title,

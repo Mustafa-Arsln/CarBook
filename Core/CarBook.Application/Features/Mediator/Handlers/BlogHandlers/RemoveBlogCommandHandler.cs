@@ -22,7 +22,8 @@ namespace CarBook.Application.Features.Mediator.Handlers.BlogHandlers
         public async Task Handle(RemoveBlogCommand request, CancellationToken cancellationToken)
         {
             var value = await _repository.GetByIdAsync(request.Id);
-            await _repository.RemoveAsync(value);
+            value.IsDeleted = true;
+            await _repository.UpdateAsync(value);
         }
     }
 }
