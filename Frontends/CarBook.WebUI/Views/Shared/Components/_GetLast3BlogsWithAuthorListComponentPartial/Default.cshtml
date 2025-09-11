@@ -15,11 +15,11 @@
                     </a>
                     <div class="text pt-4">
                         <div class="meta mb-3">
-                            <div><a href="#">@item.CreatedDate.ToShortDateString()</a></div>
-                            <div><a href="#">@item.AuthorName</a></div>
+                                <div><a href="/Blog/BlogDetail/@item.BlogId">@item.CreatedDate.ToShortDateString()</a></div>
+                                <div><a href="/Blog/BlogDetail/@item.BlogId">@item.AuthorName</a></div>
                           <@* div><a href="#" class="meta-chat"><span class="icon-chat"></span> 0</a></div> *@>
                         </div>
-                        <h3 class="heading mt-2"><a href="#">@item.Title</a></h3>
+                            <h3 class="heading mt-2"><a href="/Blog/BlogDetail/@item.BlogId">@item.Title</a></h3>
                         <p><a href="/Blog/BlogDetail/@item.BlogId " class="btn btn-primary">Devamını oku...</a></p>
                     </div>
                 </div>

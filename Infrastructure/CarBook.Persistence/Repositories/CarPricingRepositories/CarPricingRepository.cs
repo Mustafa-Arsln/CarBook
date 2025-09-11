@@ -39,7 +39,7 @@ namespace CarBook.Persistence.Repositories.CarPricingRepositories
             using (var command = _context.Database.GetDbConnection().CreateCommand())
             {
                 command.CommandText = "Select * From (Select Model,Name,CoverImageURL" +
-                    ",PricingId,Amount  From CarPricings Inner Join Cars On Cars.CarId=CarPricings.CarId " +
+                    ",PricingId,Amount, CarPricings.CarId  From CarPricings Inner Join Cars On Cars.CarId=CarPricings.CarId " +
                     " Inner Join Brands  On Brands.BrandId=Cars.BrandId)As SourceTable Pivot (Sum(Amount)" +
                     " For PricingId In ([1],[2],[3])) as PivotTable;";
                 command.CommandType = System.Data.CommandType.Text;
@@ -48,8 +48,6 @@ namespace CarBook.Persistence.Repositories.CarPricingRepositories
                 {
                     while (reader.Read())
                     {
-                   
-
                         CarPricingViewModel carPricingViewModel = new CarPricingViewModel()
                         {
                             Brand = reader["Name"].ToString(),
@@ -61,7 +59,8 @@ namespace CarBook.Persistence.Repositories.CarPricingRepositories
                                 Convert.ToDecimal(reader["1"]),
                                 Convert.ToDecimal(reader["2"]),
                                 Convert.ToDecimal(reader["3"])
-                            }
+                            },
+                            CarId = Convert.ToInt32(reader["CarId"])
 
                         };
                         values.Add(carPricingViewModel);
